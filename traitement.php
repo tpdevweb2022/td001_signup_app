@@ -11,6 +11,13 @@ $file = $_FILES["avatar"];
 
 // Si le formulaire a bien été envoyé en méthode POST ET depuis le bouton de soumission
 if ($_SERVER["REQUEST_METHOD"] === "POST" and isset($_POST["submit_form"])) {
+
+    // On gère la longueur du pseudo
+    if (strlen($pseudo) < 5) {
+        echo "Le pseudo n'est pas assez long";
+        die;
+    }
+
     // L'email fourni doit être valide, nous avions effectué une vérification du format email
     // lors de la vérification des variables, nous pouvons donc écrire
     // SI $email est strictement égal à FALSE, alors mauvais email
